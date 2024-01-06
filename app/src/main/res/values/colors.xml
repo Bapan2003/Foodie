@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="purple_200">#B3AFAF</color>
+    <color name="purple_500">#EB9B9B9C</color>
+    <color name="purple_700">#9599999A</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main">#D3F46D44</color>
+    <color name="main2">#E64A19</color>
+    <color name="main3">#C3775F</color>
+    <color name="colorPrimary">#9F9D9D</color>
+    <color name="colorPrimaryDark">#9F9D9D</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--    <color name="white">#FFFFFF</color>-->
+    <color name="signupColor">#066e8a</color>
+</resources>
