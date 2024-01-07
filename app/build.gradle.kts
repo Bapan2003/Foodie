@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    val lifecycle_version = "2.6.2"
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -56,9 +57,16 @@ dependencies {
 //gif
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
 //    retrofit and gson
-    implementation ("com.google.code.gson:gson:2.6.2")
+    implementation ("com.google.code.gson:gson:2.10")
     implementation ("com.squareup.retrofit2:retrofit:2.0.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.0.2")
 //    glide
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    implementation ("android.arch.lifecycle:extensions:1.1.0")
 }
