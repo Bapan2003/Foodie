@@ -1,6 +1,7 @@
 package com.example.foodie.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.foodie.Activity.RandomMealDetailsActivity
 import com.example.foodie.ModelClass.Meal
 import com.example.foodie.ModelClass.MealLists
 import com.example.foodie.Retrofit.RetrofitInstance
@@ -42,9 +44,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeMVVM.getRandomMeal()
         observerRandomMeal()
+        onClick()
 
     }
 
+    private fun onClick() {
+        binding.randomMealImg.setOnClickListener {
+            val intent= Intent(activity,RandomMealDetailsActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
     fun observerRandomMeal(){

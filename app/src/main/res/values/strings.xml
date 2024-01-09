@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home"><b>Home</b></string>
+    <string name="meal_name"><b>Meal Name</b></string>
+    <string name="category_chiken"><b>Category: Chiken</b></string>
+    <string name="area"><b>Area: Kolkata</b></string>
 </resources>

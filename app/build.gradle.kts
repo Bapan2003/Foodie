@@ -69,4 +69,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
     implementation ("android.arch.lifecycle:extensions:1.1.0")
+
+   //
+    implementation ("com.google.android.material:material:1.0.0")
 }
