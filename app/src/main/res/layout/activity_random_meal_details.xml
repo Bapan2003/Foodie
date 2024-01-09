@@ -114,14 +114,7 @@
                     android:text=""
                     />
             </LinearLayout>
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
