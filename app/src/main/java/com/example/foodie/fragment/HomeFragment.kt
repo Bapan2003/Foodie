@@ -26,6 +26,17 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var homeMVVM:HomeViewModel
+    private lateinit var meal:Meal
+
+    companion object{
+        const val  MEAL_ID="MEAL_ID"
+        const val MEAL_NAME="MEAL_NAME"
+        const val MEAL_THUMB="MEAL_THUMB"
+        const val MEAL_DETAILS="MEAL_DETAILS"
+        const val MEAL_AREA="MEAL_AREA"
+        const val MEAL_CATEGORY="MEAL_CATEGORY"
+        const val MEAL_YT="MEAL_YT"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeMVVM= ViewModelProvider(this).get(HomeViewModel::class.java)
@@ -51,7 +62,15 @@ class HomeFragment : Fragment() {
     private fun onClick() {
         binding.randomMealImg.setOnClickListener {
             val intent= Intent(activity,RandomMealDetailsActivity::class.java)
+            intent.putExtra("MEAL_ID",meal.idMeal)
+            intent.putExtra("MEAL_NAME",meal.strMeal)
+            intent.putExtra("MEAL_THUMB",meal.strMealThumb)
+            intent.putExtra("MEAL_DETAILS",meal.strInstructions)
+            intent.putExtra("MEAL_AREA",meal.strArea)
+            intent.putExtra("MEAL_CATEGORY",meal.strCategory)
+            intent.putExtra("MEAL_YT",meal.strYoutube)
             startActivity(intent)
+
         }
     }
 
@@ -60,8 +79,9 @@ class HomeFragment : Fragment() {
         homeMVVM.observeRandomMealLiveData().observe(viewLifecycleOwner,object : Observer<Meal>{
             override fun onChanged(value: Meal) {
 //                Log.d("Test",value.idMeal)
+                meal=value
                 Glide.with(this@HomeFragment)
-                    .load(value!!.strMealThumb)
+                    .load(if (value != null) value.strMealThumb else throw NullPointerException("Expression 'value' must not be null"))
                     .into(binding.randomMealImg)
             }
         })

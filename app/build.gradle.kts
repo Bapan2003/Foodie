@@ -7,6 +7,9 @@ android {
     namespace = "com.example.foodie"
     compileSdk = 34
 
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
     defaultConfig {
         applicationId = "com.example.foodie"
         minSdk = 26
@@ -14,6 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        useLibrary ("org.apache.http.legacy")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
