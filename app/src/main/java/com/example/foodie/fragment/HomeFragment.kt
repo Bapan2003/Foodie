@@ -11,11 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.foodie.Activity.MealDetailsActivity
+import com.example.foodie.Adapter.CategoryAdapter
 import com.example.foodie.Adapter.PopularItemAdapter
+import com.example.foodie.ModelClass.Category
 import com.example.foodie.ModelClass.Meal
 
 import com.example.foodie.ModelClass.PopularMeal
@@ -31,6 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeMVVM:HomeViewModel
     private lateinit var meal:Meal
     private lateinit var  popularAdapter:PopularItemAdapter
+    private lateinit var categoryAdapter: CategoryAdapter
 
     companion object{
         const val  MEAL_ID="MEAL_ID"
@@ -46,6 +50,7 @@ class HomeFragment : Fragment() {
         homeMVVM= ViewModelProvider(this).get(HomeViewModel::class.java)
         binding =FragmentHomeBinding.inflate(layoutInflater)
         popularAdapter=PopularItemAdapter()
+        categoryAdapter= CategoryAdapter()
     }
 
     override fun onCreateView(
@@ -59,13 +64,32 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         preparePopularRecyclerView()
+        prepareCategoryRecyclerView()
         homeMVVM.getRandomMeal()
         observerRandomMeal()
         onClickRandomMeal()
         homeMVVM.getPopularMeal()
         observerPopularMeal()
         onClickPopularItem()
+        homeMVVM.getCategory()
+        observeCategory()
 
+    }
+
+    private fun observeCategory() {
+        homeMVVM.observeCategoryLiveData().observe(viewLifecycleOwner,object :Observer<List<Category>>{
+            override fun onChanged(value: List<Category>) {
+                categoryAdapter.setCategory(value as ArrayList<Category>)
+            }
+
+        })
+    }
+
+    private fun prepareCategoryRecyclerView() {
+        binding.categoryRecyclerView.apply {
+            layoutManager =GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
+            adapter=categoryAdapter
+        }
     }
 
     private fun onClickPopularItem() {

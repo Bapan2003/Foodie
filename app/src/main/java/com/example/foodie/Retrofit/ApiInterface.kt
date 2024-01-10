@@ -1,5 +1,6 @@
 package com.example.foodie.Retrofit
 
+import com.example.foodie.ModelClass.CategorieModelClass
 import com.example.foodie.ModelClass.MealLists
 import com.example.foodie.ModelClass.PopularItemModelClass
 import retrofit2.Call
@@ -15,5 +16,8 @@ interface ApiInterface {
     fun getMealById(@Query("i")idMeal:String): Call<MealLists>
     @GET("filter.php?")
     fun getPopularItemMeal(@Query("c")mealName:String):Call<PopularItemModelClass>
+
+    @GET("categories.php")
+    fun getCategory():Call<CategorieModelClass>
 
 }
