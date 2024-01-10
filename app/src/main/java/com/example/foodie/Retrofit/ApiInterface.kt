@@ -2,7 +2,6 @@ package com.example.foodie.Retrofit
 
 import com.example.foodie.ModelClass.MealLists
 import com.example.foodie.ModelClass.PopularItemModelClass
-import com.example.foodie.ModelClass.PopularMeal
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
