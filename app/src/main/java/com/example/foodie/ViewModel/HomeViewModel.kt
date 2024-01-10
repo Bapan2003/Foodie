@@ -23,7 +23,8 @@ class HomeViewModel:ViewModel() {
                     val popularMealList:List<PopularMeal> =response.body()!!.meals
                     popularItemLiveData.value=popularMealList
 
-                }
+                }else
+                    Log.d("bapansne","else")
             }
 
             override fun onFailure(call: Call<PopularItemModelClass>?, t: Throwable?) {

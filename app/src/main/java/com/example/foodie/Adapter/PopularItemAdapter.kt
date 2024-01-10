@@ -8,9 +8,11 @@ import com.example.foodie.ModelClass.PopularMeal
 import com.example.foodie.databinding.PopularItemsBinding
 
 class PopularItemAdapter ():RecyclerView.Adapter<PopularItemAdapter.PopularItemViewHolder>() {
+    lateinit var  onItemClick:((PopularMeal)->Unit)
     private var mealList=ArrayList<PopularMeal>()
     fun setPopularMeal(_mealList:ArrayList<PopularMeal>){
         this.mealList=_mealList
+        notifyDataSetChanged()
     }
 
     class PopularItemViewHolder(val binding:PopularItemsBinding):RecyclerView.ViewHolder(binding.root)
@@ -27,5 +29,8 @@ class PopularItemAdapter ():RecyclerView.Adapter<PopularItemAdapter.PopularItemV
         Glide.with(holder.itemView)
             .load(mealList[position].strMealThumb)
             .into(holder.binding.popularCardItem)
+        holder.itemView.setOnClickListener{
+            onItemClick.invoke(mealList[position])
+        }
     }
 }

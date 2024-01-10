@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.foodie.Activity.RandomMealDetailsActivity
+import com.example.foodie.Activity.MealDetailsActivity
 import com.example.foodie.Adapter.PopularItemAdapter
 import com.example.foodie.ModelClass.Meal
 
@@ -59,12 +59,24 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         preparePopularRecyclerView()
-        homeMVVM.getPopularMeal()
-        observerPopularMeal()
         homeMVVM.getRandomMeal()
         observerRandomMeal()
-        onClick()
+        onClickRandomMeal()
+        homeMVVM.getPopularMeal()
+        observerPopularMeal()
+        onClickPopularItem()
 
+    }
+
+    private fun onClickPopularItem() {
+        popularAdapter.onItemClick={
+            popularMeal ->
+            val intent=Intent(activity,MealDetailsActivity::class.java)
+            intent.putExtra(MEAL_ID,popularMeal.idMeal)
+            intent.putExtra(MEAL_NAME,popularMeal.strMeal)
+            intent.putExtra(MEAL_THUMB,popularMeal.strMealThumb)
+            startActivity(intent)
+        }
     }
 
     private fun preparePopularRecyclerView() {
@@ -77,18 +89,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerPopularMeal() {
-        homeMVVM.observePopularMealLiveData().observe(viewLifecycleOwner,object : Observer<List<PopularMeal>>{
-            override fun onChanged(value: List<PopularMeal>) {
-
-                popularAdapter.setPopularMeal(_mealList = value as ArrayList<PopularMeal>)
-            }
-
+        homeMVVM.observePopularMealLiveData().observe(viewLifecycleOwner,{
+                   mealList ->
+                       popularAdapter.setPopularMeal(_mealList =  mealList as ArrayList<PopularMeal> )
         })
+//        ,object : Observer<List<PopularMeal>>{
+//            override fun onChanged(value: List<PopularMeal>) {
+//
+//                popularAdapter.setPopularMeal(_mealList = value as ArrayList<PopularMeal>)
+//            }
+//
+//        })
+
     }
 
-    private fun onClick() {
+    private fun onClickRandomMeal() {
         binding.randomMealImg.setOnClickListener {
-            val intent= Intent(activity,RandomMealDetailsActivity::class.java)
+            val intent= Intent(activity,MealDetailsActivity::class.java)
             intent.putExtra("MEAL_ID",meal.idMeal)
             intent.putExtra("MEAL_NAME",meal.strMeal)
             intent.putExtra("MEAL_THUMB",meal.strMealThumb)

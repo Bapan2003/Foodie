@@ -11,7 +11,9 @@ interface ApiInterface {
     @GET("random.php")
     fun getRandomMealList(): Call<MealLists>
 
-    @GET("filter.php?c=Seafood")
+    @GET("lookup.php?")
+    fun getMealById(@Query("i")idMeal:String): Call<MealLists>
+    @GET("filter.php?")
     fun getPopularItemMeal(@Query("c")mealName:String):Call<PopularItemModelClass>
 
 }
