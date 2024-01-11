@@ -19,6 +19,7 @@
             app:contentScrim="@color/purple_200"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title=""
+            app:maxLines="2"
             app:collapsedTitleTextColor="@color/black"
             app:expandedTitleTextColor="@color/white"
             >
