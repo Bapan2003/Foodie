@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_120sdp"
+    android:layout_margin="@dimen/_7sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_9sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/categoryItemImageView"
+            android:layout_width="@dimen/_145sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_2"
+            android:scaleType="fitXY"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/itemNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:text="Biriyani"
+                android:fontFamily="@font/myfont"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/categoryDes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/_3sdp"
+                android:paddingRight="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:text="My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal.My name is Bapan Mandal."
+                android:maxLines="4"
+                android:ellipsize="end"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
