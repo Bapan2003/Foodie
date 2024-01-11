@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.foodie.Activity.CategoryAllMeal
 import com.example.foodie.Activity.MealDetailsActivity
 import com.example.foodie.Adapter.CategoryAdapter
 import com.example.foodie.Adapter.PopularItemAdapter
@@ -73,6 +74,18 @@ class HomeFragment : Fragment() {
         onClickPopularItem()
         homeMVVM.getCategory()
         observeCategory()
+        onClickCategroy()
+
+    }
+
+    private fun onClickCategroy() {
+        categoryAdapter.onItemClick={
+            category ->
+            val intent=Intent(context,CategoryAllMeal::class.java)
+            intent.putExtra(MEAL_CATEGORY,category.strCategory)
+            intent.putExtra(MEAL_ID,category.idCategory)
+            startActivity(intent)
+        }
 
     }
 
