@@ -20,8 +20,9 @@ abstract class MealDatabase():RoomDatabase() {
                  INSTANCE=Room.databaseBuilder(
                      context.applicationContext,
                      MealDatabase::class.java,
-                     "MealDB"
-                 ).build()
+                     "MealDb"
+                 ).fallbackToDestructiveMigration()
+                     .build()
              }
              return INSTANCE!!
          }

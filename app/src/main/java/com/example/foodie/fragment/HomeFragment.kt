@@ -16,15 +16,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.foodie.Activity.CategoryAllMeal
+import com.example.foodie.Activity.MainActivity
 import com.example.foodie.Activity.MealDetailsActivity
 import com.example.foodie.Adapter.CategoryAdapter
 import com.example.foodie.Adapter.PopularItemAdapter
+import com.example.foodie.DB.MealDatabase
 import com.example.foodie.ModelClass.Category
 import com.example.foodie.ModelClass.Meal
 
 import com.example.foodie.ModelClass.PopularMeal
 
 import com.example.foodie.ViewModel.HomeViewModel
+import com.example.foodie.ViewModel.MainViewModelFactory
 import com.example.foodie.databinding.FragmentHomeBinding
 
 
@@ -48,7 +51,7 @@ class HomeFragment : Fragment() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        homeMVVM= ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeMVVM= (activity as MainActivity).viewmodel
         binding =FragmentHomeBinding.inflate(layoutInflater)
         popularAdapter=PopularItemAdapter()
         categoryAdapter= CategoryAdapter()

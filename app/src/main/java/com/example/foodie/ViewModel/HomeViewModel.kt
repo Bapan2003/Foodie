@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.foodie.DB.MealDatabase
 import com.example.foodie.ModelClass.CategorieModelClass
 import com.example.foodie.ModelClass.Category
 import com.example.foodie.ModelClass.Meal
@@ -14,7 +15,7 @@ import com.example.foodie.Retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
-class HomeViewModel:ViewModel() {
+class HomeViewModel(mealDatabase: MealDatabase):ViewModel() {
       private var randomMealLiveData= MutableLiveData<Meal>()
       private  var categoryLiveData=MutableLiveData<List<Category>>()
       private var popularItemLiveData= MutableLiveData<List<PopularMeal>>()

@@ -11,10 +11,10 @@ import com.example.foodie.ModelClass.Meal
 interface MealDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsertMeal(meal: Meal)
+    suspend fun upsertMeal(meal: Meal)
 
     @Delete
-    fun deleteMeal(meal:Meal)
+    suspend fun deleteMeal(meal:Meal)
 
     @Query("select * from Meal")
     fun getAllMeal():LiveData<List<Meal>>

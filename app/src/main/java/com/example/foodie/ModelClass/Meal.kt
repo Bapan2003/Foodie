@@ -25,7 +25,7 @@ data class Meal(
     val strIngredient18: Any?,
     val strIngredient19: Any?,
     val strIngredient2: String?,
-    val strIngredient20: Any,
+    val strIngredient20: Any?,
     val strIngredient3: String?,
     val strIngredient4: String?,
     val strIngredient5: String?,
