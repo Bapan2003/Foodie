@@ -2,11 +2,11 @@
 On the foodie platform, you'll discover an extensive range of cuisines neatly categorized into sections such as vegetarian, non-vegetarian, vegan, desserts, and more.
 
 # Preview
-<p float="left">
+<p>
     <img src="https://github.com/Bapan2003/Foodie/assets/85957141/9b7f02aa-4b70-4238-a02d-c27e0d37847a" width="300" />
   <img src="https://github.com/Bapan2003/Foodie/assets/85957141/be093f87-5e48-4403-9690-7ae636dcbd53" width="300" /> 
 </p>
-<p float="left">
+<p>
   <img src="https://github.com/Bapan2003/Foodie/assets/85957141/d0749145-7d3d-4183-b3bd-658c5cc63b7e" width="300" />
   <img src="https://github.com/Bapan2003/Foodie/assets/85957141/29942e14-246e-43d0-95ca-3f46475efb4e" width="300" /> 
 </p>
