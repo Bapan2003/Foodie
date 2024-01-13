@@ -1,5 +1,6 @@
 package com.example.foodie.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodie.Activity.MainActivity
+import com.example.foodie.Activity.MealDetailsActivity
 import com.example.foodie.Adapter.FavouriteAdapter
 import com.example.foodie.ModelClass.Meal
 import com.example.foodie.R
@@ -72,6 +74,22 @@ class FavouritesFragment : Fragment() {
             }
         }
         ItemTouchHelper(itemTouchHelper).attachToRecyclerView(favouriteBinding.recyclerView)
+
+        onClickItemView()
+    }
+
+    private fun onClickItemView() {
+        favouriteAdapter.onItemClick={
+                meal ->
+            val intent= Intent(activity, MealDetailsActivity::class.java)
+            intent.apply {
+                putExtra(HomeFragment.MEAL_ID,meal.idMeal)
+                putExtra(HomeFragment.MEAL_NAME,meal.strMeal)
+                putExtra(HomeFragment.MEAL_THUMB,meal.strMealThumb)
+            }
+
+            startActivity(intent)
+        }
     }
 
     private fun observeLiveData() {

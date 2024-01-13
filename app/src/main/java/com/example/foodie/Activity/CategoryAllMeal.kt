@@ -58,7 +58,7 @@ class CategoryAllMeal : AppCompatActivity() {
         categoryMVVM.obbserveCategoryLiveData().observe(this,object :Observer<List<PopularMeal>>{
             override fun onChanged(value: List<PopularMeal>) {
                 Log.d("bapansne","hii")
-                categoryWiseItemAdapter.setCategoryWiseItem(value as ArrayList<PopularMeal>)
+                categoryWiseItemAdapter.setCategoryWiseItem(value as ArrayList<PopularMeal>,categoryName)
             }
 
         })

@@ -39,5 +39,8 @@ class FavouriteAdapter:RecyclerView.Adapter<FavouriteAdapter.FavouriteViewHolder
           .into(holder.binding.categoryItemImageView)
         holder.binding.itemNameTextView.text=meal.strMeal
         holder.binding.categoryDes.text=meal.strInstructions
+        holder.itemView.setOnClickListener {
+            onItemClick.invoke(meal)
+        }
     }
 }
