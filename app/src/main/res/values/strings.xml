@@ -6,4 +6,6 @@
     <string name="meal_name"><b>Meal Name</b></string>
     <string name="category_chiken"><b>Category: Chiken</b></string>
     <string name="area"><b>Area: Kolkata</b></string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

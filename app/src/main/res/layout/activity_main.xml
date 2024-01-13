@@ -14,11 +14,13 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
+      app:defaultNavHost="true"
       app:layout_constraintBottom_toTopOf="@id/btmNav"
       app:navGraph ="@navigation/nav_graph"
       android:name="androidx.navigation.fragment.NavHostFragment"
+
 />
-  
+
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/btmNav"
       android:layout_width="match_parent"

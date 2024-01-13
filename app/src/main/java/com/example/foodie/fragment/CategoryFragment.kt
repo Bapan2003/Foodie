@@ -10,22 +10,25 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foodie.Activity.CategoryAllMeal
+import com.example.foodie.Activity.MainActivity
+import com.example.foodie.Activity.SearchActivity
 import com.example.foodie.Adapter.CategoryAdapter
 import com.example.foodie.ModelClass.Category
 import com.example.foodie.R
 import com.example.foodie.ViewModel.CategoryItemViewModel
 import com.example.foodie.ViewModel.CategoryViewModel
+import com.example.foodie.ViewModel.HomeViewModel
 import com.example.foodie.databinding.FragmentCategoryBinding
 
 
 class CategoryFragment : Fragment() {
     private  lateinit var categoryBinding:FragmentCategoryBinding
-    private  lateinit var categoryMVVM:CategoryViewModel
+    private  lateinit var categoryMVVM:HomeViewModel
     private lateinit var categoryAdapter: CategoryAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         categoryBinding=FragmentCategoryBinding.inflate(layoutInflater)
-        categoryMVVM=ViewModelProvider(this).get(CategoryViewModel::class.java)
+        categoryMVVM=(activity as MainActivity).viewmodel
         categoryAdapter= CategoryAdapter()
     }
 
@@ -42,11 +45,12 @@ class CategoryFragment : Fragment() {
         prepareCategoryRecyclerView()
         observeCategory()
         onClickCategroy()
+        onSearchIconClick()
     }
 
     private fun observeCategory() {
         categoryMVVM.getCategory()
-        categoryMVVM.observeCategryLiveData().observe(viewLifecycleOwner,object : Observer<List<Category>>{
+        categoryMVVM.observeCategoryLiveData().observe(viewLifecycleOwner,object : Observer<List<Category>>{
             override fun onChanged(value: List<Category>) {
                 categoryAdapter.setCategory(value as ArrayList<Category>)
             }
@@ -67,6 +71,13 @@ class CategoryFragment : Fragment() {
         categoryBinding.categoryRecyclerView.apply {
             layoutManager=GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
             adapter=categoryAdapter
+        }
+    }
+    private fun onSearchIconClick() {
+        categoryBinding.linearLayout.setOnClickListener {
+            val intent = Intent(context, SearchActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }

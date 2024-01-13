@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodie.Activity.MainActivity
 import com.example.foodie.Activity.MealDetailsActivity
+import com.example.foodie.Activity.SearchActivity
 import com.example.foodie.Adapter.FavouriteAdapter
 import com.example.foodie.ModelClass.Meal
 import com.example.foodie.R
@@ -76,6 +77,14 @@ class FavouritesFragment : Fragment() {
         ItemTouchHelper(itemTouchHelper).attachToRecyclerView(favouriteBinding.recyclerView)
 
         onClickItemView()
+        onSearchIconClick()
+    }
+    private fun onSearchIconClick() {
+        favouriteBinding.linearLayout.setOnClickListener {
+            val intent = Intent(context, SearchActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 
     private fun onClickItemView() {

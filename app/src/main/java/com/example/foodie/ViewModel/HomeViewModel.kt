@@ -13,6 +13,7 @@ import com.example.foodie.ModelClass.MealLists
 import com.example.foodie.ModelClass.PopularItemModelClass
 import com.example.foodie.ModelClass.PopularMeal
 import com.example.foodie.Retrofit.RetrofitInstance
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
@@ -22,6 +23,9 @@ class HomeViewModel(val mealDatabase: MealDatabase):ViewModel() {
       private  var categoryLiveData=MutableLiveData<List<Category>>()
       private var popularItemLiveData= MutableLiveData<List<PopularMeal>>()
     private var favouriteLiveData=mealDatabase.mealDao().getAllMeal()
+    private var searchLiveData=MutableLiveData<List<Meal>>()
+    private  var  nullValue =MutableLiveData<Boolean>()
+
      fun getPopularMeal(){
         RetrofitInstance.api.getPopularItemMeal("Seafood").enqueue(object :retrofit2.Callback<PopularItemModelClass>{
             override fun onResponse(call: Call<PopularItemModelClass>?, response: Response<PopularItemModelClass>?) {
@@ -46,7 +50,7 @@ class HomeViewModel(val mealDatabase: MealDatabase):ViewModel() {
               override fun onResponse(call: Call<MealLists>?, response: Response<MealLists>?) {
 
                   if(response?.body() !=null){
-                      val randomMeal: Meal = response.body()!!.meals[0]
+                      val randomMeal: Meal = response.body().meals[0]
                       randomMealLiveData.value=randomMeal
 //                      Glide.with(this@HomeFragment)
 //                          .load(randomMeal.strMealThumb)
@@ -82,6 +86,32 @@ class HomeViewModel(val mealDatabase: MealDatabase):ViewModel() {
 
            })
     }
+
+    fun getMealBySearch(id:String){
+        RetrofitInstance.api.getSearchMeal(id).enqueue(object :retrofit2.Callback<MealLists>{
+            override fun onResponse(call: Call<MealLists>?, response: Response<MealLists>?) {
+
+                    if (response?.body() != null && response.body().meals!=null) {
+                        nullValue.value=false
+                        searchLiveData.value = response.body().meals
+
+                    } else{
+                        nullValue.value=true
+                        Log.d("search crashes", "null")
+                    }
+
+
+            }
+
+            override fun onFailure(call: Call<MealLists>?, t: Throwable?) {
+                Log.d("search crashes",t.toString())
+            }
+
+        })
+    }
+    fun observeNulValue():LiveData<Boolean>{
+        return  nullValue
+    }
     fun observeCategoryLiveData():LiveData<List<Category>>{
         return categoryLiveData
     }
@@ -96,6 +126,10 @@ class HomeViewModel(val mealDatabase: MealDatabase):ViewModel() {
 
     fun observeFavouriteMealLiveData():LiveData<List<Meal>>{
         return favouriteLiveData
+    }
+
+    fun observeSearchLiveData():LiveData<List<Meal>>{
+        return searchLiveData
     }
     fun deleteMeal(meal: Meal){
         viewModelScope.launch {
