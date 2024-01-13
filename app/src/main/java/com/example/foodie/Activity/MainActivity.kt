@@ -1,7 +1,9 @@
 package com.example.foodie.Activity
 
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.Navigation
@@ -29,7 +31,21 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.hostFragment)
 
         NavigationUI.setupWithNavController(btmNavigation,navController)
+        val bottomNavSelectorStates = arrayOf(
+            intArrayOf(android.R.attr.state_selected),//selected
+            intArrayOf(-android.R.attr.state_selected),//default/un-selected
+        )
 
+
+        val colors = intArrayOf(
+            ContextCompat.getColor(this,R.color.main), ContextCompat.getColor(this, R.color.black)
+        )
+
+
+        btmNavigation.itemIconTintList =
+            ColorStateList(bottomNavSelectorStates, colors)
+        btmNavigation.itemTextColor =
+            ColorStateList(bottomNavSelectorStates, colors)
 
     }
 }
