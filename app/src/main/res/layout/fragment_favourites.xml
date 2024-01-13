@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3E2E2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.FavouritesFragment">
 
@@ -54,6 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"

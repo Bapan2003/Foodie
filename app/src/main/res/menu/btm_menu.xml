@@ -4,14 +4,14 @@
     <item android:id="@+id/homeFragment"
         android:title="Home"
         android:checkable="true"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/outline_home_24"
         
         />
     <item android:id="@+id/favouritesFragment"
         android:title="Favourite"
         android:checkable="true"
-        android:icon="@drawable/baseline_favorite_24"/>
-    <item android:icon="@drawable/baseline_category_24"
+        android:icon="@drawable/baseline_favorite_border_24"/>
+    <item android:icon="@drawable/outline_category_24"
         android:title="Category"
         android:checkable="true"
         android:id="@+id/categoryFragment"/>

@@ -11,6 +11,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main">#D31D40F3</color>
     <color name="main2">#E64A19</color>
+    <color name="iconColor">#A12B2929</color>
     <color name="main3">#C3775F</color>
     <color name="colorPrimary">#9F9D9D</color>
     <color name="colorPrimaryDark">#9F9D9D</color>

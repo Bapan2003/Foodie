@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val colors = intArrayOf(
-            ContextCompat.getColor(this,R.color.main), ContextCompat.getColor(this, R.color.black)
+            ContextCompat.getColor(this,R.color.black), ContextCompat.getColor(this, R.color.iconColor)
         )
 
 
