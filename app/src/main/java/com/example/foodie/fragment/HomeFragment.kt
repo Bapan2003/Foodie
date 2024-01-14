@@ -190,4 +190,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
 
     }
+
 }

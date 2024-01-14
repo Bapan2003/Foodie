@@ -3,6 +3,7 @@ package com.example.foodie.Activity
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 
@@ -18,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
+    var backPressedTime: Long = 0
     val viewmodel:HomeViewModel by lazy{
         val mealDatabase= MealDatabase.getInstance(this)
         val mainViewModelFactory=MainViewModelFactory(mealDatabase)
@@ -47,5 +49,15 @@ class MainActivity : AppCompatActivity() {
         btmNavigation.itemTextColor =
             ColorStateList(bottomNavSelectorStates, colors)
 
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(this, "Press back again to exit.", Toast.LENGTH_SHORT).show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 }
